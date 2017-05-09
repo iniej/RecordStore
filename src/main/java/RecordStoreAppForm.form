@@ -5,7 +5,9 @@
     <constraints>
       <xy x="12" y="-67" width="777" height="647"/>
     </constraints>
-    <properties/>
+    <properties>
+      <toolTipText value="Payment info"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="469d9" class="javax.swing.JLabel">
@@ -259,6 +261,14 @@
           </component>
         </children>
       </scrollpane>
+      <component id="88fac" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Payment info"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

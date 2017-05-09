@@ -46,26 +46,23 @@ public class RecordStoreAppForm extends JFrame {
         pack();
 
         addListeners();
-        setTitle("Record Store Database Application");
+        setTitle("Record Store Application");
 
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 
     }
+    // Create combo boxes for dropdown menu(for adding info into tables
+    // and for showing info in a table.
     private void selectItemComboBox(){
         selectItemComboBox.addItem("Inventory");
         selectItemComboBox.addItem("Sold Item");
         selectItemComboBox.addItem("Payment Information");
-//        AddToComboBox.addItem("Bargain List");
-//        AddToComboBox.addItem("Donate Item");
 
         displayItemComboBox.addItem("All Inventory Records");
         displayItemComboBox.addItem("Sold Items");
         displayItemComboBox.addItem("Payment Info");
-//        DisplayComboBox.addItem("Pay Information");
-//        DisplayComboBox.addItem("Donated Item");
-//        DisplayComboBox.addItem("No. of days in Inventory List");
 
         ReturnToComboBox.addItem("Yes");
         ReturnToComboBox.addItem("No");
@@ -101,7 +98,7 @@ public class RecordStoreAppForm extends JFrame {
                     }
                     RecordStoreAppData recordStoreAppData = new RecordStoreAppData(cName, phone, aName, title, price, sqlrecordDate);
                     recordStoreAppManager.addRecordToDatabase(recordStoreAppData);
-                    //Clear input JTextFields
+                    //Clear JTextFields
                     consignorNameTextField.setText("");
                     phoneTextField.setText("");
                     artistName.setText("");
@@ -120,14 +117,6 @@ public class RecordStoreAppForm extends JFrame {
                         recordStoreAppManager.addRecordToSoldTable(soldItem);
                         recordStoreAppManager.delete(recordSold);//deletes selected object from Inventory list after it is added to sold item list.
                         JOptionPane.showMessageDialog(RecordStoreAppForm.this, "The selected item has been moved to sold item list");
-//                        String payNowString = JOptionPane.showInputDialog(RecordStoreAppForm.this,
-//                                "Please enter the amount to be paid to consignor");
-//                        double payNow = Double.parseDouble(payNowString);
-//                        double amountOwed = consignorShare - payNow;
-//                        PayInfoObject payInfoObject = new PayInfoObject(consignorName, consignorShare, payNow, amountOwed);
-//                        recordDBcontroller.addRecordToPayInfoTable(payInfoObject);
-                        //RecordObject ro = InventoryJList.getSelectedValue();
-                        //SoldItemListModel.addElement(recordObjectSold);
 
                 }
                 else if(selectItemComboBox.getSelectedItem().equals("Payment Information")){
@@ -160,10 +149,6 @@ public class RecordStoreAppForm extends JFrame {
                     ArrayList<PaymentInfo> allPaymentData = recordStoreAppManager.getAllPaymentData();
                     setListOfPaymentData(allPaymentData);
                 }
-//                if(displayItemComboBox.getSelectedItem().equals("Pay Information")){
-//                    ArrayList<PayInfoObject> allPayInfoData = recordDBcontroller.getAllPayInfoData();
-//                    setListOfPayInfoData(allPayInfoData);
-//                }
             }
         });
         deleteRecordButton.addActionListener(new ActionListener() {
