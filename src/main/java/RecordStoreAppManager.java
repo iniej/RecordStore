@@ -5,6 +5,7 @@ import java.util.ArrayList;
  */
 public class RecordStoreAppManager {
 
+    //This is the main class.
     static RecordStoreAppForm recordStoreAppForm;
     static RecordStoreAppDataBase recordStoreAppDataBase;
 
@@ -17,7 +18,6 @@ public class RecordStoreAppManager {
         recordStoreAppDataBase.createTable();
 
         recordStoreAppForm = new RecordStoreAppForm(this);
-        //record.setListData(allData);
     }
     void delete(RecordStoreAppData recordStoreAppData){
         recordStoreAppDataBase.delete(recordStoreAppData);

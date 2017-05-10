@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,7 +19,7 @@ public class RecordStoreAppForm extends JFrame {
     private JButton deleteRecordButton;
     private JButton showInfoButton;
     private JButton addRecordButton;
-    private JButton button4;
+    private JButton quitButton;
     private JTextField priceTextField;
     private JList <RecordStoreAppData>inventoryJList;
     private JList<SoldItem> soldItemJList;
@@ -67,6 +69,8 @@ public class RecordStoreAppForm extends JFrame {
         ReturnToComboBox.addItem("Yes");
         ReturnToComboBox.addItem("No");
     }
+
+    private final double rate = .4;
     private void addListeners() {
         addRecordButton.addActionListener(new ActionListener() {
             @Override
@@ -109,7 +113,7 @@ public class RecordStoreAppForm extends JFrame {
                 else if(selectItemComboBox.getSelectedItem().equals("Sold Item")) {
                         String sPriceString = JOptionPane.showInputDialog(RecordStoreAppForm.this, "Please enter the selling price");
                         double sPrice = Double.parseDouble(sPriceString);
-                        double consignorShare = sPrice * 0.4;
+                        double consignorShare = sPrice * rate;
                         RecordStoreAppData recordSold = inventoryJList.getSelectedValue();
                         String sTitle = recordSold.getTitle();
                         String consignorName = recordSold.getConsignorName();
@@ -123,7 +127,7 @@ public class RecordStoreAppForm extends JFrame {
                     SoldItem recordToPay = soldItemJList.getSelectedValue();
                     String name = recordToPay.getConsignor();
                     double soldPrice = recordToPay.getSoldPrice();
-                    double conShare = soldPrice * 0.4;
+                    double conShare = soldPrice * rate;
                     String amountPaidString = JOptionPane.showInputDialog(RecordStoreAppForm.this, "Enter pay amount");
                     double amountPaid = Double.parseDouble(amountPaidString);
                     double amountDue = conShare - amountPaid;
@@ -172,6 +176,19 @@ public class RecordStoreAppForm extends JFrame {
                 }
             }
         });
+        quitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int quit = JOptionPane.showConfirmDialog(
+                        RecordStoreAppForm.this, "Are you sure you want to quit?",
+                        "Quit", JOptionPane.OK_CANCEL_OPTION);
+                if (quit == JOptionPane.OK_OPTION) {
+
+                    System.exit(0);
+                }
+            }
+        });
+
         daysInInventoryButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -183,6 +200,9 @@ public class RecordStoreAppForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
             }
         });
+
+
+
     }
     private void displayNumberOfDays(){
         java.sql.Date displayDays = inventoryJList.getSelectedValue().getDate();

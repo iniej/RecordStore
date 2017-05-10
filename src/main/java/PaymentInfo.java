@@ -2,6 +2,8 @@
  * Created by Iniebiyo Joshua on 5/8/2017.
  */
 public class PaymentInfo {
+
+    // Data for payment information.
     String name;
     double share;
     double paid;
@@ -20,7 +22,7 @@ public class PaymentInfo {
     }
 
     public void setShare(double share) {
-        this.share = share;
+        this.share = share; // Percent of sold price that goes to the consignor.
     }
 
     public double getPaid() {
@@ -36,7 +38,7 @@ public class PaymentInfo {
     }
 
     public void setDue(double due) {
-        this.due = due;
+        this.due = due; //Due is the amount still owed to the consignor.
     }
 
     PaymentInfo(String conName, double sAmount, double pAmount, double dAmount){

@@ -3,6 +3,7 @@
  */
 public class SoldItem {
 
+    // Information in the SoldItem table.
     String Consignor;
     double SoldPrice;
     String title;

@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 public class RecordStoreAppData {
 
+    //This class contains data in the inventory_info table.
     int ID;
     String ConsignorName;
     String phone;

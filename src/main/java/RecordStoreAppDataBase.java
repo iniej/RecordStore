@@ -127,8 +127,8 @@ public class RecordStoreAppDataBase {
         }
     }
 
-    //}
-    //defines method that displays record from the database
+
+    //Defines method that displays record from the database
     ArrayList<RecordStoreAppData> fetchAllRecords() {
         ArrayList<RecordStoreAppData> allRecords = new ArrayList();
         try (Connection connection = DriverManager.getConnection(DB_CONNECTION_URL, USER, PASSWORD);
